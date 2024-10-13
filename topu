@@ -1,0 +1,29 @@
+#!/data/data/com.termux/files/usr/bin/python3.11
+import os
+import re
+
+logo = '''
+██     ██ ███████ ███████ ██████  
+██     ██ ██      ██      ██   ██ 
+██  █  ██ █████   █████   ██   ██ 
+██ ███ ██ ██      ██      ██   ██ 
+ ███ ███  ███████ ███████ ██████  
+----------------------------------
+OWNER : TOPU SHAHA
+----------------------------------'''
+
+def main():
+    os.system('clear')
+    print(logo)
+    try:
+        email = input('PUT EMAIL -> ') 
+        pasx = input('PUT PASSWORD -> ') 
+        cookix = input('PUT COOKIE -> ') 
+        uid = re.search(r'c_user=([^;]+)', cookix).group(1) 
+        formatted_data = uid+ '|' + email + '|' + pasx + '|' + cookix
+        with open('/sdcard/UID-MAIL-PASS-COKI.txt', 'a') as f:
+            f.write(formatted_data + '\n')
+        main()
+    except Exception as e:
+        print(f"An error occurred: {e}")
+main()
